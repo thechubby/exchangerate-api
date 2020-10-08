@@ -11,6 +11,7 @@ export class Currency extends React.Component<{}, { result: any }> {
         const response = await fetch('https://v6.exchangerate-api.com/v6/475bc9b837c8f856fce85933/latest/USD');
         let data = await response.json();
         this.setState({result: data.conversion_rates.EUR});
+
     }
 
     render(): React.ReactNode {
