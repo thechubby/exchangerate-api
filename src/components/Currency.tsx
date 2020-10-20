@@ -1,9 +1,13 @@
 import React from 'react';
 
-export class Currency extends React.Component<{}, { result: any }> {
-    constructor(props: any) {
+interface StateInterface {
+    result: string
+}
+
+export class Currency extends React.Component<any, StateInterface> {
+    constructor(props: StateInterface) {
         super(props);
-        this.state = { result: null };
+        this.state = { result: '' };
         this.onBtnClick = this.onBtnClick.bind(this);
     }
 
@@ -11,7 +15,6 @@ export class Currency extends React.Component<{}, { result: any }> {
         const response = await fetch('https://v6.exchangerate-api.com/v6/475bc9b837c8f856fce85933/latest/USD');
         let data = await response.json();
         this.setState({result: data.conversion_rates.EUR});
-
     }
 
     render(): React.ReactNode {
